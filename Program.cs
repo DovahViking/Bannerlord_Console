@@ -9,7 +9,7 @@ namespace Bannerlord_Console
             bool quit = false;
             while (!quit)
             {
-                ConsoleKeyInfo input = Console.ReadKey(true);
+                ConsoleKeyInfo input = Console.ReadKey(true); // Behaves like it should
 
                 if (input.Key == ConsoleKey.D1)
                 {

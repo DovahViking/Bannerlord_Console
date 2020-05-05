@@ -11,7 +11,7 @@ namespace Bannerlord_Console
             bool quit = false;
             while (!quit)
             {
-                ConsoleKeyInfo input = Console.ReadKey(true); // shit is bugged or something, doesn't usually do this
+                ConsoleKeyInfo input = Console.ReadKey(true); // Doesn't behave like it should
 
                 // ---------- Introduction ---------- \\
 
