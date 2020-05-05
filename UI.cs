@@ -11,8 +11,6 @@ namespace Bannerlord_Console
             bool quit = false;
             while (!quit)
             {
-                ConsoleKeyInfo input = Console.ReadKey(true); // Doesn't behave like it should
-
                 // ---------- Introduction ---------- \\
 
                 string intro = "Mount & Blade II: Consolelord";
@@ -20,12 +18,15 @@ namespace Bannerlord_Console
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(intro, Console.ForegroundColor);
                 Console.ResetColor();
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
 
                 // ---------- Create a new lord ---------- \\
 
                 Console.WriteLine("1. Create a new lord.\n");
                 Console.WriteLine("2. Quit");
+
+                ConsoleKeyInfo input = Console.ReadKey(true); // Has to be placed right before the inputs, no prints allowed in between
 
                 if (input.Key == ConsoleKey.D1)
                 {
