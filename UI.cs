@@ -6,6 +6,11 @@ namespace Bannerlord_Console
 {
     class UI
     {
+        string location = null;
+        string first_location = null;
+        string second_location = null;
+        string third_location = null;
+        string fourth_location = null;
         public void User_Interface()
         {
             bool quit = false;
@@ -32,7 +37,7 @@ namespace Bannerlord_Console
                 {
                     Console.Write("Enter your lord's name: ");
                     string user_name = Console.ReadLine();
-                    while (double.TryParse(user_name, out _))
+                    while (double.TryParse(user_name, out _) || user_name == "")
                     {
                         Console.Write("Enter your lord's name: ");
                         user_name = Console.ReadLine();
@@ -54,6 +59,27 @@ namespace Bannerlord_Console
                     quit = true;
                 }
             }
+        }
+
+        public void Player_Location()
+        {
+            if (location == null)
+            {
+                location = "Training Grounds";
+            }
+            else
+            {
+                
+            }
+
+            Console.WriteLine($"\nLocation: {location}");
+        }
+
+        public void Available_Locations()
+        {
+            // Adjacent village locations
+            // Something like 4 different adjacent locations
+            // If a village has the location 35, then its adjacent locations would be 33, 34, 36, 37, which you can travel to
         }
     }
 }
