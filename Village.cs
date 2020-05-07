@@ -21,8 +21,10 @@ namespace Bannerlord_Console
         //    Corenia, Crios, Dalmengus, Deriah, Diantogmail, Dnin, Dradios, Druimmor, Durn, Dvorusta, Dyopalis,
         //}
 
+        public List<Village> villages = new List<Village>();
+
         string name;
-        Faction.factions faction = new Faction.factions();
+        public Faction.factions faction = new Faction.factions();
         string recruit_types;
         int recruits;
         string resource_types;
@@ -38,6 +40,7 @@ namespace Bannerlord_Console
             this.resource_types = resource_types;
             this.resources = resources;
             this.location = location;
+            villages.Add(this);
         }
 
         public override string ToString()

@@ -11,6 +11,7 @@ namespace Bannerlord_Console
             Console.WriteLine(Aab_Hon);
             Console.WriteLine(Ab_Comer);
             UI user_interface = new UI();
+            Faction.Playtime();
             user_interface.Player_Location();
             user_interface.User_Interface();
         }

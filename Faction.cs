@@ -1,16 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+using System.Timers;
 
 namespace Bannerlord_Console
 {
     class Faction
     {
-        public int Player_Tier()
+        public static int user_tier = 1;
+
+        public static void Playtime()
         {
-            int user_tier = 1;
-            // if something something
-            return user_tier;
+            Timer start_time = new Timer(120000);
+            start_time.Elapsed += (sender, e) => Time_Tier_Up(sender, e, start_time);
+            start_time.Start();
+            start_time.Enabled = true;
+            start_time.AutoReset = true;
+        }
+
+        public static void Time_Tier_Up(object source, ElapsedEventArgs e, Timer start_time)
+        {
+            if (user_tier >= 6)
+            {
+                start_time.Stop();
+                start_time.Enabled = false;
+                start_time.AutoReset = false;
+            }
+            else
+            {
+                user_tier += 1;
+                Console.WriteLine(user_tier);
+            }
         }
 
         public enum factions
@@ -33,6 +54,7 @@ namespace Bannerlord_Console
             Archer, Infantry, Mameluke_Cavalry, Mameluke_Guard, // Tier 4
             Master_Archer, Veteran_Infantry, Mameluke_Heavy_Cavalry, Mameluke_Palace_Guard // Tier 5
         }
+
 
         public enum Battania_troops
         {
@@ -82,6 +104,14 @@ namespace Bannerlord_Console
             Hardened_Crossbowman, Billman, Light_Cavalry, Swordsman, Knight, // Tier 4
             Sharpshooter, Voulgier, Pikeman, Vanguard, Sergeant, Champion, // Tier 5
             Banner_Knight // Tier 6
+        }
+
+        public void Recruit_Tiers()
+        {
+            //if (user_tier == 1 && Village.faction == factions.Aserai) // am in big trouble
+            //{
+
+            //}
         }
     }
 }
