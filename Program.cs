@@ -6,6 +6,7 @@ namespace Bannerlord_Console
     {
         static void Main(string[] args)
         {
+            // ---------- Instead of making 100s of villages manually, use a loop ---------- \\
             Village Aab_Hon = new Village("Aab Hon", Faction.factions.Aserai, "", 0, "", 0, 1);
             Village Ab_Comer = new Village("Ab_Comer", Faction.factions.Battania, "", 0, "", 0, 35);
             Console.WriteLine(Aab_Hon);

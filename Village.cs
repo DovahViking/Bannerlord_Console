@@ -31,12 +31,14 @@ namespace Bannerlord_Console
         int resources;
         int location;
 
+        Faction fac = new Faction();
+
         public Village(string name, Faction.factions faction, string recruit_types, int recruits, string resource_types, int resources, int location)
         {
             this.name = name;
             this.faction = faction;
-            this.recruit_types = Recruit_Type();
-            this.recruits = recruits;
+            this.recruit_types = Recruit_Type(fac);
+            this.recruits = Troops_Amount();
             this.resource_types = resource_types;
             this.resources = resources;
             this.location = location;
@@ -48,24 +50,47 @@ namespace Bannerlord_Console
             return string.Format("\nName: {0}\nFaction: {1}\nRecruit types: {2}\nRecruits: {3}\nResource types: {4}\nResources: {5}\nLocation: {6}", name, faction, recruit_types, recruits, resource_types, resources, location);
         }
 
-        public string Recruit_Type()
+        public string Recruit_Type(Faction fac) // ----- still need previous Tier troops to show up for each faction ----- \
         {
             switch (faction)
             {
                 case Faction.factions.Aserai:
-                    return Faction.Aserai_troops.Recruit.ToString();
+                    return fac.Recruit_Tiers(this);
                 case Faction.factions.Battania:
-                    return Faction.Battania_troops.Volunteer.ToString();
+                    return fac.Recruit_Tiers(this);
                 case Faction.factions.Calradic_Empire:
-                    return Faction.Calradic_Empire_troops.Recruit.ToString();
+                    return fac.Recruit_Tiers(this);
                 case Faction.factions.Khuzait:
-                    return Faction.Khuzait_troops.Nomad.ToString();
+                    return fac.Recruit_Tiers(this);
                 case Faction.factions.Sturgia:
-                    return Faction.Sturgia_troops.Recruit.ToString();
+                    return fac.Recruit_Tiers(this);
                 case Faction.factions.Vlandia:
-                    return Faction.Vlandia_troops.Recruit.ToString();
+                    return fac.Recruit_Tiers(this);
                 default:
                     return null;
+            }
+        }
+
+        public int Troops_Amount()
+        {
+            Random rng_amount = new Random();
+
+            switch (Faction.user_tier)
+            {
+                case 1:
+                    return rng_amount.Next(0, 6);
+                case 2:
+                    return rng_amount.Next(0, 9);
+                case 3:
+                    return rng_amount.Next(0, 12);
+                case 4:
+                    return rng_amount.Next(0, 14);
+                case 5:
+                    return rng_amount.Next(0, 16);
+                case 6:
+                    return rng_amount.Next(0, 18);
+                default:
+                    return 0;
             }
         }
     }
