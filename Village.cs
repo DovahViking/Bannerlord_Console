@@ -71,6 +71,57 @@ namespace Bannerlord_Console
             "Thractorae", "Vathea", "Veron", "Vinela", "Zeocorys"
         };
 
+        // ----- Not tested yet ----- \\
+        public string Get_Village_Name()
+        {
+            // Hypothesis is thinking this thing will kill the entire thing cause it's calling
+            // the func and returning everything at once instead of 1 by 1 for each constructor call
+
+            // Thinking I will need an enumerator
+
+            foreach (string ase_vil in aserai_villages)
+            {
+                faction = Faction.factions.Aserai;
+                return ase_vil;
+            }
+            foreach (string bat_vil in battania_villages)
+            {
+                faction = Faction.factions.Battania;
+                return bat_vil;
+            }
+            foreach (string khu_vil in khuzait_villages)
+            {
+                faction = Faction.factions.Khuzait;
+                return khu_vil;
+            }
+            foreach (string nor_emp_vil in northern_empire_villages)
+            {
+                faction = Faction.factions.Northern_Empire;
+                return nor_emp_vil;
+            }
+            foreach (string sou_emp_vil in southern_empire_villages)
+            {
+                faction = Faction.factions.Southern_Empire;
+                return sou_emp_vil;
+            }
+            foreach (string stu_vil in sturgia_villages)
+            {
+                faction = Faction.factions.Sturgia;
+                return stu_vil;
+            }
+            foreach (string vla_vil in vlandia_villages)
+            {
+                faction = Faction.factions.Vlandia;
+                return vla_vil;
+            }
+            foreach (string wes_emp_vil in western_empire_villages)
+            {
+                faction = Faction.factions.Western_Empire;
+                return wes_emp_vil;
+            }
+            return null;
+        }
+
         public List<Village> villages = new List<Village>();
 
         string name;
@@ -85,7 +136,7 @@ namespace Bannerlord_Console
 
         public Village(string name, Faction.factions faction, string recruit_types, int recruits, string resource_types, int resources, int location)
         {
-            this.name = name;
+            this.name = Get_Village_Name();
             this.faction = faction;
             this.recruit_types = Recruit_Type(fac);
             this.recruits = Troops_Amount();
