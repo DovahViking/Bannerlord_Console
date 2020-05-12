@@ -6,20 +6,70 @@ namespace Bannerlord_Console
 {
     class Village
     {
-        //public string[] villages = // Test, no idea if arrays are a good idea for this, no idea when to use arrays
-        //    { "Aab Hon", "Ab Comer", "Abghan", "Abou Khih", "Aegosca", "Aeoria", "Ain Baliq", "Akiser",
-        //    "Alantas", "Alebat", "Alision", "Alorstan", "Alov", "Alsasos", "Amycon", "Andum", "Arpotis", "Arromanc",
-        //    "Aster", "Ath Caral", "Atrion", "Avalyps" }; // to be continued.. ?
+        // Instead of making an array with ALL villages and
+        // instead of making an enum with ALL villages and assigning factions to them there
+        // I thought making arrays with villages for each faction would be the most efficient
 
-        //public enum Villages // Test, no idea if enums are a good idea for this, no idea when to use enums
-        //{
-        //    Aab_Hon = Faction.factions.Aserai, // Maybe do it like this??
-        //    Ab_Comer, Abghan, Abou_Khih, Aegosca, Aeoria, Ain_Baliq, Akiser, Alantas, Alebat,
-        //    Alision, Alorstan, Alov, Alsasos, Amycon, Andum, Arpotis, Arromanc, Aster, Ath_Caral, Atrion,
-        //    Avalyps, Baq, Beglomuar, Bergum, Bir_Seif, Bog_Beth, Bryn_Glas, Bukits, Bunqaz, Caira, Caleus,
-        //    Calioc, Cananc, Canoros, Canterion, Cantrec, Carphenion, Chanopsis, Chornobas, Clag_Ban,
-        //    Corenia, Crios, Dalmengus, Deriah, Diantogmail, Dnin, Dradios, Druimmor, Durn, Dvorusta, Dyopalis,
-        //}
+        string[] aserai_villages =
+        {
+            "Aab Hon", "Abghan", "Abou Khih", "Ain Baliq", "Baq", "Bir Seif", "Bunqaz", "Ezbet Nahul", "Fanab",
+            "Hamoshawat", "Hiblet", "Hoqqa", "Ismaily", "Jahasim", "Kuqa", "Lamesa", "Mabwaz", "Medim", "Mijayit",
+            "Mossom", "Nahlan", "Qablab", "Qednar", "Sahel", "Shibal Zumr", "Tasheba", "Tubilis", "Uqba", "Wadar", "Zalm"
+        };
+
+        string[] battania_villages =
+        {
+            "Ab Comer", "Andum", "Aster", "Ath Caral", "Beglomuar", "Bog Beth", "Bryn Glas", "Cantrec", "Clag Ban",
+            "Dalmengus", "Diantogmail", "Druimmor", "Durn", "Ebereth", "Fenon Tryn", "Flintolg", "Gainseth", "Glenlithrig",
+            "Glintor", "Imlagh", "Inveth", "Lindorn", "Llanoc Hen", "Mag Arba", "Morihig", "Pendraic", "Pennit Nal",
+            "Rhemtoil", "Seordas", "Swenrin", "Tor Leiad", "Tor Melina", "Uthelaim"
+        };
+
+        string[] khuzait_villages =
+        {
+            "Akiser", "Gereden", "Hanekhy", "Ispantar", "Karakalat", "Kiraz", "Makeb", "Mazen",
+            "Mivanjan", "Omrotok", "Pabastan", "Ransam", "Shapeshte", "Simira", "Tismirr", "Ulaan", "Okhutan", "Urunjan"
+        };
+
+        string[] northern_empire_villages =
+        {
+            "Acragora", "Aeoria", "Agalmon", "Alatys", "Alosea", "Ataconia", "Atrion", "Avasinton", "Crios", "Dyopalis",
+            "Epinosa", "Enosia", "Gaos", "Gymos", "Hetania", "Jeracos", "Lochana", "Marathea", "Masangara",
+            "Mecalovea", "Nortanisa", "Orthra", "Pons", "Potamis", "Rhesos", "Samatha", "Stathymos", "Syratos",
+            "Temhem", "Themys", "Varagos", "Vealos"
+        };
+
+        string[] southern_empire_villages =
+        {
+            "Alision", "Amycon", "Atphynia", "Avalyps", "Caira", "Canoros", "Canterion", "Chanopsis", "Corenia",
+            "Erebulos", "Ethemisa", "Eunalica", "Gorcorys", "Jogurys", "Lanthas", "Lartusys", "Melion", "Metachia", "Morenia",
+            "Odrysa", "Parasemnos", "Polisia", "Popsia", "Psotai", "Sagolina", "Sagora", "Saldannis",
+            "Sestadeim", "Spotia", "Tevea", "Vargornis", "Zestea"
+        };
+
+        string[] sturgia_villages =
+        {
+            "Alebat", "Alov", "Borchovagorka", "Bukits", "Chornobas", "Dnin", "Dvorusta", "Ferth", "Forin",
+            "Glavstrom", "Ismilkorg", "Karbur", "Kargrev", "Korsyas", "Kranirog", "Kvol", "Mazhadan", "Marabrot",
+            "Nevyansk", "Omkany", "Ov", "Radakmed", "Rodobas", "Safna", "Skorin", "Takor", "Urikskala", "Ustokol",
+            "Visibrot", "Vladiv", "Yangutum", "Zhemyan"
+        };
+
+        string[] vlandia_villages =
+        {
+            "Alantas", "Alorstan", "Arromanc", "Caleus", "Calioc", "Cananc", "Chornad", "Drapand", "Deriat", "Etirburg",
+            "Ferton", "Fregian", "Furbec", "Halisvust", "Hongard", "Horsger", "Larnac", "Mareiven", "Marin", "Meroc", "Mot",
+            "Nogrent", "Oritan", "Ormanfard", "Palisona", "Rodetan", "Remental", "Rulund", "Savinth", "Sirindac",
+            "Talivel", "Tirby", "Usanc", "Valanby", "Verecsand", "Vesin"
+        };
+
+        string[] western_empire_villages =
+        {
+            "Aegosca", "Alsasos", "Arpotis", "Bergum", "Carphenion", "Dradios", "Elvania", "Elipa", "Gamardan",
+            "Garontor", "Gersegos", "Goleryn", "Garengolia", "Hertogea", "Leblenion", "Lysia", "Montos",
+            "Neocorys", "Nideon", "Onica", "Oristocorys", "Phasos", "Primessos", "Tarcutis", "Thersenion", "Thorios",
+            "Thractorae", "Vathea", "Veron", "Vinela", "Zeocorys"
+        };
 
         public List<Village> villages = new List<Village>();
 
