@@ -6,12 +6,9 @@ namespace Bannerlord_Console
 {
     class UI
     {
-        string location = null;
-        string first_location = null;
-        string second_location = null;
-        string third_location = null;
-        string fourth_location = null;
-        public void User_Interface()
+        int location = 0;
+
+        public void User_Interface(Village village)
         {
             bool quit = false;
             while (!quit)
@@ -52,6 +49,8 @@ namespace Bannerlord_Console
                     string user_faction = null;
                     Lord user_lord = new Lord(user_name, Convert.ToInt32(user_age), user_faction);
 
+                    Player_Location(village);
+
                     Console.ReadKey();
                 }
                 if (input.Key == ConsoleKey.D2)
@@ -61,25 +60,33 @@ namespace Bannerlord_Console
             }
         }
 
-        public void Player_Location()
+        public void Player_Location(Village village)
         {
-            if (location == null)
+            string location_name;
+
+            if (location == 0)
             {
-                location = "Training Grounds";
+                location_name = "Training grounds";
             }
             else
             {
-                
+                location = village.location;
+                location_name = village.name;
             }
 
-            Console.WriteLine($"\nLocation: {location}");
+            Console.WriteLine($"Location: {location_name}");
         }
 
-        public void Available_Locations()
+        public void Available_Locations(int first, int second, int third, int fourth)
         {
             // Adjacent village locations
             // Something like 4 different adjacent locations
             // If a village has the location 35, then its adjacent locations would be 33, 34, 36, 37, which you can travel to
+
+            first = location - 2;
+            second = location - 1;
+            third = location + 1;
+            fourth = location + 2;
         }
     }
 }
